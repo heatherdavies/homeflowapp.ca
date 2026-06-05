@@ -3,335 +3,689 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HomeFlow: BTB Feng Shui – Mindful Insights for Your Home</title>
-  <meta name="description" content="HomeFlow is your personal guide to BTB Feng Shui. Map your home's energy, receive personalized cures, and cultivate a more harmonious life through intentional design." />
+  <title>HomeFlow: BTB Feng Shui</title>
+  <meta name="description" content="A mindful sanctuary for harmonizing your living space through the ancient wisdom of BTB Feng Shui. Available on iOS and Android." />
+  <link rel="icon" href="assets/app-icon-homeflow.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --forest:   #1A2E25;
-      --dark:     #0D1A12;
-      --gold:     #C8963E;
-      --gold-lt:  #E2B96A;
-      --cream:    #F5EFE4;
-      --muted:    #9A8F7E;
-      --surface:  #1E3028;
+      --forest-deep:   #0D2318;
+      --forest-dark:   #1B3A2D;
+      --forest-mid:    #2A5240;
+      --forest-light:  #4A7C59;
+      --gold:          #C8963E;
+      --gold-light:    #E0B96A;
+      --gold-pale:     #F0D9A8;
+      --amber:         #C8823A;
+      --stone:         #D4C9BC;
+      --stone-muted:   #9A8F85;
+      --cream:         #F5EFE6;
+      --text-primary:  #EDE8E0;
+      --text-muted:    #A09890;
+      --rule:          rgba(200, 150, 62, 0.25);
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Inter', sans-serif;
-      background: var(--dark);
-      color: var(--cream);
-      line-height: 1.7;
+      background-color: var(--forest-deep);
+      color: var(--text-primary);
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 18px;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* ── Nav ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(13, 26, 18, 0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(200, 150, 62, 0.2);
-      padding: 0 24px;
-      display: flex; align-items: center; justify-content: space-between;
-      height: 60px;
-    }
-    .nav-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.4rem; font-weight: 600;
-      color: var(--gold-lt); text-decoration: none;
-      letter-spacing: 0.5px;
-    }
-    .nav-links { display: flex; gap: 28px; }
-    .nav-links a {
-      color: var(--muted); text-decoration: none;
-      font-size: 0.85rem; font-weight: 500;
-      letter-spacing: 0.5px; text-transform: uppercase;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--gold-lt); }
-
-    /* ── Hero ── */
+    /* ── HERO ─────────────────────────────────────────────────────────────── */
     .hero {
+      position: relative;
       min-height: 100vh;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      padding: 100px 24px 60px;
-      background:
-        linear-gradient(to bottom, rgba(13,26,18,0.7) 0%, rgba(13,26,18,0.5) 50%, rgba(13,26,18,0.95) 100%),
-        url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1400&q=80') center/cover no-repeat;
+      padding: 80px 24px 100px;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('assets/hero-bg.jpg');
+      background-size: cover;
+      background-position: center 30%;
+      filter: brightness(0.32) saturate(0.7);
+      z-index: 0;
+    }
+    .hero-vignette {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, transparent 30%, var(--forest-deep) 100%);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 720px;
+    }
+    .hero-icon {
+      width: 96px;
+      height: 96px;
+      border-radius: 22px;
+      margin-bottom: 32px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.6), 0 0 0 1px rgba(200,150,62,0.3);
     }
     .hero-eyebrow {
-      font-size: 0.75rem; font-weight: 600;
-      letter-spacing: 3px; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 20px;
+      font-family: 'Raleway', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
     }
-    .hero h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.8rem, 7vw, 5rem);
-      font-weight: 600; line-height: 1.1;
-      color: var(--cream); margin-bottom: 16px;
+    .hero-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(48px, 8vw, 80px);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--cream);
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+    .hero-title span {
+      color: var(--gold-light);
+      font-style: italic;
+    }
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(16px, 2.5vw, 22px);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--stone);
+      margin-bottom: 40px;
       letter-spacing: 0.5px;
     }
-    .hero-tagline {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-      font-style: italic; color: var(--gold-lt);
-      margin-bottom: 32px;
-    }
-    .hero-desc {
-      max-width: 560px; font-size: 1rem;
-      color: rgba(245, 239, 228, 0.8);
-      margin-bottom: 48px;
+    .hero-cta-group {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
     }
     .btn {
-      display: inline-block;
-      background: var(--gold);
-      color: var(--dark);
-      padding: 14px 36px;
-      border-radius: 50px;
-      font-weight: 600; font-size: 0.95rem;
-      text-decoration: none; letter-spacing: 0.5px;
-      transition: background 0.2s, transform 0.15s;
-    }
-    .btn:hover { background: var(--gold-lt); transform: translateY(-2px); }
-    .btn-outline {
-      background: transparent;
-      border: 1.5px solid var(--gold);
-      color: var(--gold-lt);
-      margin-left: 16px;
-    }
-    .btn-outline:hover { background: rgba(200,150,62,0.1); }
-
-    /* ── Section shared ── */
-    section { padding: 80px 24px; }
-    .container { max-width: 900px; margin: 0 auto; }
-    .section-label {
-      font-size: 0.7rem; font-weight: 600;
-      letter-spacing: 3px; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 12px;
-    }
-    .section-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      font-weight: 600; color: var(--cream);
-      margin-bottom: 20px; line-height: 1.2;
-    }
-    .section-body {
-      color: rgba(245,239,228,0.75);
-      font-size: 1rem; max-width: 680px;
-    }
-    .divider {
-      width: 60px; height: 2px;
-      background: var(--gold);
-      margin: 20px 0 40px;
-    }
-
-    /* ── Features ── */
-    .features { background: var(--surface); }
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px; margin-top: 48px;
-    }
-    .feature-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(200,150,62,0.2);
-      border-radius: 16px; padding: 28px 24px;
-      transition: border-color 0.2s, transform 0.2s;
-    }
-    .feature-card:hover {
-      border-color: rgba(200,150,62,0.5);
-      transform: translateY(-4px);
-    }
-    .feature-icon { font-size: 2rem; margin-bottom: 14px; }
-    .feature-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.25rem; font-weight: 600;
-      color: var(--gold-lt); margin-bottom: 8px;
-    }
-    .feature-desc { font-size: 0.9rem; color: rgba(245,239,228,0.65); line-height: 1.6; }
-
-    /* ── Privacy ── */
-    .privacy { background: var(--dark); }
-    .privacy-content {
-      background: var(--surface);
-      border: 1px solid rgba(200,150,62,0.15);
-      border-radius: 16px; padding: 40px;
-      margin-top: 40px;
-    }
-    .privacy-content h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem; color: var(--gold-lt);
-      margin: 28px 0 10px;
-    }
-    .privacy-content h3:first-child { margin-top: 0; }
-    .privacy-content p {
-      font-size: 0.92rem;
-      color: rgba(245,239,228,0.7);
-      margin-bottom: 12px;
-    }
-
-    /* ── Support ── */
-    .support { background: var(--surface); text-align: center; }
-    .support-card {
-      background: rgba(200,150,62,0.08);
-      border: 1px solid rgba(200,150,62,0.3);
-      border-radius: 20px; padding: 48px 40px;
-      max-width: 560px; margin: 40px auto 0;
-    }
-    .support-card p {
-      color: rgba(245,239,228,0.75);
-      margin-bottom: 28px; font-size: 1rem;
-    }
-    .support-email {
-      display: inline-block;
-      color: var(--gold-lt);
-      font-size: 1.1rem; font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      border-radius: 6px;
+      font-family: 'Raleway', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
       text-decoration: none;
-      border-bottom: 1px solid rgba(200,150,62,0.4);
-      padding-bottom: 2px;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--forest-deep);
+      border: 1px solid var(--gold);
+    }
+    .btn-primary:hover { background: var(--gold-light); border-color: var(--gold-light); }
+    .btn-secondary {
+      background: transparent;
+      color: var(--gold-light);
+      border: 1px solid rgba(200,150,62,0.5);
+    }
+    .btn-secondary:hover { border-color: var(--gold-light); background: rgba(200,150,62,0.08); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--stone);
+      border: 1px solid rgba(212,201,188,0.3);
+      font-size: 12px;
+    }
+    .btn-ghost:hover { border-color: var(--stone); color: var(--cream); }
+
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0.45;
+    }
+    .hero-scroll-hint span {
+      font-family: 'Raleway', sans-serif;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--stone);
+    }
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(1.1); }
+    }
+
+    /* ── SECTION SHARED ───────────────────────────────────────────────────── */
+    section { padding: 100px 24px; }
+    .container { max-width: 900px; margin: 0 auto; }
+    .container-wide { max-width: 1100px; margin: 0 auto; }
+
+    .section-rule {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+    .section-rule::before, .section-rule::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+    }
+    .section-label {
+      font-family: 'Raleway', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      white-space: nowrap;
+    }
+    .section-heading {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--cream);
+      margin-bottom: 24px;
+    }
+    .section-heading em { font-style: italic; color: var(--gold-light); }
+    .section-body {
+      font-size: clamp(16px, 2vw, 19px);
+      line-height: 1.85;
+      color: var(--stone);
+      max-width: 720px;
+    }
+    .section-body + .section-body { margin-top: 20px; }
+    .section-body strong { color: var(--cream); font-weight: 500; }
+
+    /* ── INTRO / PHILOSOPHY ───────────────────────────────────────────────── */
+    .intro {
+      background: var(--forest-deep);
+      border-top: 1px solid var(--rule);
+    }
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+      margin-top: 64px;
+    }
+    @media (max-width: 700px) { .intro-grid { grid-template-columns: 1fr; gap: 40px; } }
+    .intro-image {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      border-radius: 4px;
+      opacity: 0.85;
+      filter: saturate(0.8);
+    }
+    .intro-text { display: flex; flex-direction: column; justify-content: center; gap: 24px; }
+
+    /* ── PULL QUOTE ───────────────────────────────────────────────────────── */
+    .pull-quote {
+      background: var(--forest-dark);
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      text-align: center;
+      padding: 80px 24px;
+    }
+    .pull-quote blockquote {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(22px, 4vw, 38px);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.5;
+      color: var(--gold-pale);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .pull-quote cite {
+      display: block;
+      margin-top: 24px;
+      font-family: 'Raleway', sans-serif;
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--stone-muted);
+      font-style: normal;
+    }
+
+    /* ── JOURNEY / STREAMS ────────────────────────────────────────────────── */
+    .journey { background: var(--forest-deep); }
+    .streams-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 2px;
+      margin-top: 56px;
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .stream-card {
+      background: var(--forest-dark);
+      padding: 32px 28px;
+      transition: background 0.2s ease;
+      border-right: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+    }
+    .stream-card:hover { background: var(--forest-mid); }
+    .stream-level {
+      font-family: 'Raleway', sans-serif;
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .stream-name {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--cream);
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+    .stream-desc {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--stone-muted);
+    }
+    .stream-easter {
+      background: rgba(200,130,58,0.06);
+      border-left: 2px solid rgba(200,130,58,0.3);
+      padding: 20px 24px;
+      margin-top: 24px;
+      border-radius: 0 4px 4px 0;
+      font-size: 14px;
+      color: var(--stone-muted);
+      font-style: italic;
+    }
+    .stream-easter strong { color: var(--amber); font-style: normal; }
+
+    /* ── DAILY PRACTICE ───────────────────────────────────────────────────── */
+    .daily { background: var(--forest-dark); }
+    .daily-pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 56px;
+    }
+    @media (max-width: 700px) { .daily-pillars { grid-template-columns: 1fr; } }
+    .pillar {
+      border-top: 1px solid var(--rule);
+      padding-top: 28px;
+    }
+    .pillar-icon {
+      font-size: 28px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .pillar-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--cream);
+      margin-bottom: 10px;
+    }
+    .pillar-body {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--stone-muted);
+    }
+
+    /* ── CHI PROFILE ──────────────────────────────────────────────────────── */
+    .chi-profile {
+      background: var(--forest-deep);
+      position: relative;
+      overflow: hidden;
+    }
+    .chi-profile-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('assets/incense-smoke.webp');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.07;
+      z-index: 0;
+    }
+    .chi-profile .container { position: relative; z-index: 1; }
+    .chi-profile-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      margin-top: 56px;
+    }
+    @media (max-width: 700px) { .chi-profile-grid { grid-template-columns: 1fr; gap: 40px; } }
+    .chi-profile-image {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 50%;
+      opacity: 0.7;
+      filter: saturate(0.6);
+      border: 1px solid var(--rule);
+    }
+    .chi-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+    .chi-tag {
+      font-family: 'Raleway', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(200,150,62,0.3);
+      padding: 6px 14px;
+      border-radius: 20px;
+    }
+
+    /* ── AESTHETIC ────────────────────────────────────────────────────────── */
+    .aesthetic {
+      background: var(--forest-dark);
+      border-top: 1px solid var(--rule);
+    }
+    .aesthetic-swatches {
+      display: flex;
+      gap: 16px;
+      margin: 40px 0;
+      flex-wrap: wrap;
+    }
+    .swatch {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .swatch-dot {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .swatch-label {
+      font-family: 'Raleway', sans-serif;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--stone-muted);
+    }
+    .swatch-value {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-family: 'Raleway', sans-serif;
+    }
+
+    /* ── FOOTER ───────────────────────────────────────────────────────────── */
+    footer {
+      background: var(--forest-deep);
+      border-top: 1px solid var(--rule);
+      padding: 60px 24px;
+      text-align: center;
+    }
+    .footer-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      opacity: 0.8;
+    }
+    .footer-name {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 22px;
+      font-weight: 300;
+      color: var(--cream);
+      margin-bottom: 8px;
+    }
+    .footer-tagline {
+      font-size: 14px;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-bottom: 32px;
+    }
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .footer-links a {
+      font-family: 'Raleway', sans-serif;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--stone-muted);
+      text-decoration: none;
       transition: color 0.2s;
     }
-    .support-email:hover { color: var(--cream); }
-
-    /* ── Footer ── */
-    footer {
-      background: var(--dark);
-      border-top: 1px solid rgba(200,150,62,0.15);
-      padding: 32px 24px;
-      text-align: center;
-      color: var(--muted);
-      font-size: 0.82rem;
+    .footer-links a:hover { color: var(--gold-light); }
+    .footer-copy {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-family: 'Raleway', sans-serif;
     }
-    footer a { color: var(--muted); text-decoration: none; }
-    footer a:hover { color: var(--gold-lt); }
 
-    /* ── Responsive ── */
+    /* ── RESPONSIVE ───────────────────────────────────────────────────────── */
     @media (max-width: 600px) {
-      .nav-links { display: none; }
-      .btn-outline { display: none; }
-      .privacy-content { padding: 24px; }
-      .support-card { padding: 32px 24px; }
+      section { padding: 72px 20px; }
+      .hero { padding: 64px 20px 80px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Nav -->
-  <nav>
-    <a class="nav-logo" href="#">HomeFlow: BTB Feng Shui</a>
-    <div class="nav-links">
-      <a href="#features">Features</a>
-      <a href="#privacy">Privacy</a>
-      <a href="#support">Support</a>
-    </div>
-  </nav>
-
-  <!-- Hero -->
+  <!-- ── HERO ──────────────────────────────────────────────────────────────── -->
   <section class="hero">
-    <p class="hero-eyebrow">BTB Feng Shui for Modern Living</p>
-    <h1>HomeFlow: BTB Feng Shui</h1>
-    <p class="hero-tagline">Mindful Insights for Your Home</p>
-    <p class="hero-desc">Map your home's energy, receive personalized BTB cures, and cultivate a more harmonious life through intentional design.</p>
-    <div>
-      <a href="#support" class="btn">Download on the App Store</a>
-      <a href="#features" class="btn btn-outline">Learn More</a>
+    <div class="hero-bg"></div>
+    <div class="hero-vignette"></div>
+    <div class="hero-content">
+      <img src="assets/app-icon-homeflow.png" alt="HomeFlow icon" class="hero-icon" />
+      <p class="hero-eyebrow">BTB Feng Shui &nbsp;&middot;&nbsp; iOS &amp; Android</p>
+      <h1 class="hero-title">Home<span>Flow</span></h1>
+      <p class="hero-subtitle">Wind and water, in the palm of your hand.</p>
+      <div class="hero-cta-group">
+        <a href="#" class="btn btn-primary">App Store</a>
+        <a href="#" class="btn btn-secondary">Google Play</a>
+        <a href="#journey" class="btn btn-ghost">Explore the app</a>
+      </div>
+    </div>
+    <div class="hero-scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
     </div>
   </section>
 
-  <!-- Features -->
-  <section class="features" id="features">
+  <!-- ── PHILOSOPHY ────────────────────────────────────────────────────────── -->
+  <section class="intro">
     <div class="container">
-      <p class="section-label">What HomeFlow Offers</p>
-      <h2 class="section-title">Harmonize Your Home. Transform Your Life.</h2>
-      <div class="divider"></div>
-      <p class="section-body">HomeFlow is your personal guide to BTB Feng Shui, designed to help you understand and optimize the energy (chi) of your living environment. Whether you are looking to invite prosperity, improve relationships, or simply create a more peaceful sanctuary, HomeFlow provides the tools and wisdom to make meaningful, intentional changes.</p>
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon">🏠</div>
-          <div class="feature-title">Comprehensive Energy Assessments</div>
-          <div class="feature-desc">Assess your property's landscape, individual rooms, or your entire home. Map your space against the Bagua to identify which life areas are thriving and which need support.</div>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">✨</div>
-          <div class="feature-title">Targeted BTB Cures & Enhancements</div>
-          <div class="feature-desc">Receive personalized recommendations based on your unique space. From simple physical adjustments to transcendental cures, HomeFlow helps you cultivate a gentle, balanced influence.</div>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🌀</div>
-          <div class="feature-title">Intentional Cure Tracker</div>
-          <div class="feature-desc">Once you place a cure, use the integrated tracker to manage your journey. Receive gentle reminders to reinforce your intentions and watch as the energy of your space shifts.</div>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">⚡</div>
-          <div class="feature-title">Instant Insight</div>
-          <div class="feature-desc">Need a quick check-in? Use Instant Insight for a rapid energy scan of any area. Perfect for getting a pulse on a room's current flow before diving into a deeper assessment.</div>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">☯️</div>
-          <div class="feature-title">Personal Chi Profile</div>
-          <div class="feature-desc">Tailor every reading to your specific life stage, personal element, and current intentions. Your Chi Profile ensures that the guidance you receive is relevant to your personal journey.</div>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">📖</div>
-          <div class="feature-title">Daily Flow & Reference Guide</div>
-          <div class="feature-desc">Stay connected to your practice with daily tasks, seasonal intentions, and a comprehensive reference library covering Yin & Yang, the Five Elements, and the deeper meanings behind the Bagua.</div>
+      <div class="section-rule"><span class="section-label">The Foundation</span></div>
+      <h2 class="section-heading">A living tradition,<br><em>brought home.</em></h2>
+      <div class="intro-grid">
+        <img src="assets/bamboo-forest.jpg" alt="Bamboo forest" class="intro-image" />
+        <div class="intro-text">
+          <p class="section-body">HomeFlow was lovingly crafted by a deeply skilled BTB Feng Shui practitioner. Its foundations rest on thousands of years of accumulated wisdom, distilled into BTB's current form. Every questionnaire, every prompt, every cure reflects that living tradition.</p>
+          <p class="section-body">Unlike traditional approaches that rely on magnetic compasses and rigid structural rules, Black Sect Tantric Buddhist Feng Shui centers on the flow of Chi, the power of intention, and the living connection between an individual's environment and their inner self.</p>
+          <p class="section-body">A BTB assessment is not a simple checklist. It is the complex interweaving of life area priorities, elemental relationships, environmental forces, spatial geometry, predecessor energy, and personal intention, all held simultaneously and read in relation to one another. HomeFlow was built to honor that complexity. <strong>The wisdom is ancient and practitioner-led. The synthesis is precise and personal.</strong></p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Privacy -->
-  <section class="privacy" id="privacy">
-    <div class="container">
-      <p class="section-label">Privacy Policy</p>
-      <h2 class="section-title">Your Privacy Matters</h2>
-      <div class="divider"></div>
-      <p class="section-body">At HomeFlow, we believe your home's energy and your personal intentions are private. Our app is designed with a privacy-first approach.</p>
-      <div class="privacy-content">
-        <h3>Data Privacy & Storage</h3>
-        <p>HomeFlow is designed with a privacy-first approach. All data you enter – including assessment results, photos of your space, and your cure tracking – is stored locally on your device. We do not collect, store, or have access to your personal data on our servers.</p>
+  <!-- ── PULL QUOTE ─────────────────────────────────────────────────────────── -->
+  <div class="pull-quote">
+    <blockquote>
+      "Your home is a living reflection of your life. Shift the space, and you shift the energy within."
+    </blockquote>
+    <cite>The BTB Principle</cite>
+  </div>
 
-        <h3>Third-Party Services</h3>
-        <p>We do not share your information with third parties. Any processing required for your assessments is handled securely and does not involve the permanent storage of your personal data on external servers.</p>
-
-        <h3>Photos</h3>
-        <p>Photos you take or upload within HomeFlow are used solely to generate your energy assessment. They are transmitted securely for analysis and are not stored, shared, or used for any other purpose.</p>
-
-        <h3>Your Control</h3>
-        <p>Because your data is stored on your device, you have complete control over it. Deleting the app will remove all locally stored data.</p>
-
-        <h3>Contact Us</h3>
-        <p>If you have any questions about our privacy practices, please contact us at <a href="mailto:support@homeflowapp.ca" style="color: var(--gold-lt);">support@homeflowapp.ca</a>.</p>
-
-        <p style="margin-top: 24px; font-size: 0.82rem; color: var(--muted);">Last updated: May 2026</p>
+  <!-- ── JOURNEY ────────────────────────────────────────────────────────────── -->
+  <section class="journey" id="journey">
+    <div class="container-wide">
+      <div class="section-rule"><span class="section-label">The Journey</span></div>
+      <h2 class="section-heading">Meet users where they are.<br><em>Grow with them.</em></h2>
+      <p class="section-body" style="max-width:680px;">HomeFlow offers multiple entry points across different skill levels. The experience is highly iterative and responsive to your needs. Users can choose their depth of practice, name their spaces, and pick up exactly where they left off.</p>
+      <div class="streams-grid">
+        <div class="stream-card">
+          <div class="stream-level">Beginner</div>
+          <div class="stream-name">Instant Insight</div>
+          <div class="stream-desc">A quick, photo-based energy reading with five immediate Flow Fixes. No Bagua mapping, no questionnaire. The fastest way in.</div>
+        </div>
+        <div class="stream-card">
+          <div class="stream-level">Beginner &ndash; Intermediate</div>
+          <div class="stream-name">Micro Space</div>
+          <div class="stream-desc">Maps life areas across any small, intentional space: a desk, altar, bedside table, windowsill, or outdoor corner.</div>
+        </div>
+        <div class="stream-card">
+          <div class="stream-level">Intermediate</div>
+          <div class="stream-name">Single Room</div>
+          <div class="stream-desc">A focused Bagua assessment of one dedicated room. A clear, contained approach that often produces noticeable results quickly.</div>
+        </div>
+        <div class="stream-card">
+          <div class="stream-level">Intermediate &ndash; Advanced</div>
+          <div class="stream-name">Macro-Environmental</div>
+          <div class="stream-desc">Reads the living energy of the land, street approach, celestial animal formations, water flow, and environmental chi before it ever reaches the door.</div>
+        </div>
+        <div class="stream-card">
+          <div class="stream-level">Advanced</div>
+          <div class="stream-name">Whole Home</div>
+          <div class="stream-desc">The most comprehensive stream. Maps all nine life area zones across an entire home or apartment, floor by floor.</div>
+        </div>
+        <div class="stream-card">
+          <div class="stream-level">All Levels</div>
+          <div class="stream-name">Space Activator</div>
+          <div class="stream-desc">The fractal Bagua at work. Choose one life area, describe any space at any scale, and receive five targeted BTB adjustments with 27-day cure tracking.</div>
+        </div>
+      </div>
+      <div class="stream-easter">
+        <strong>A hidden path awaits.</strong> Those who linger at the moon gate long enough may discover <strong>Pet Shui</strong> &mdash; a playful, secret flow for the mindful care of animal companions.
       </div>
     </div>
   </section>
 
-  <!-- Support -->
-  <section class="support" id="support">
+  <!-- ── CHI PROFILE ────────────────────────────────────────────────────────── -->
+  <section class="chi-profile">
+    <div class="chi-profile-bg"></div>
     <div class="container">
-      <p class="section-label">Support</p>
-      <h2 class="section-title">We Are Here to Help</h2>
-      <div class="divider" style="margin: 20px auto 0;"></div>
-      <div class="support-card">
-        <p>Have a question about HomeFlow, a feature request, or need help with your account? We would love to hear from you. Reach out and we will get back to you as soon as possible.</p>
-        <a href="mailto:support@homeflowapp.ca" class="support-email">support@homeflowapp.ca</a>
+      <div class="section-rule"><span class="section-label">Personalization</span></div>
+      <div class="chi-profile-grid">
+        <div>
+          <h2 class="section-heading">The <em>Chi Profile.</em></h2>
+          <p class="section-body">Before any assessment begins, users create their Chi Profile: a deeply personal intake that maps their intentions, life priorities, space history, elemental tendencies, and the areas of life calling most urgently for attention.</p>
+          <p class="section-body" style="margin-top:20px;">This profile is the heart of HomeFlow's personalization. Every reading is uniquely weighted to the user's stated goals, ensuring that cures feel privately crafted rather than generically prescribed. The user drives the experience entirely through their own inputs and observations; a language model then assists in synthesizing the rich interplay of all these threads into a cohesive reading, in the spirit and language of BTB.</p>
+          <div class="chi-tags">
+            <span class="chi-tag">Life Intentions</span>
+            <span class="chi-tag">Zone Priorities</span>
+            <span class="chi-tag">Space History</span>
+            <span class="chi-tag">Five Elements</span>
+            <span class="chi-tag">Predecessor Energy</span>
+            <span class="chi-tag">Sensory Impressions</span>
+          </div>
+        </div>
+        <img src="assets/lotus-water.webp" alt="Lotus on still water" class="chi-profile-image" />
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- ── DAILY PRACTICE ─────────────────────────────────────────────────────── -->
+  <section class="daily">
+    <div class="container">
+      <div class="section-rule"><span class="section-label">Daily Practice</span></div>
+      <h2 class="section-heading">Feng Shui as a<br><em>sustained rhythm.</em></h2>
+      <p class="section-body">HomeFlow extends far beyond one-time assessments. Its Daily Practice ecosystem transforms Feng Shui from a weekend project into a living, breathing part of everyday life.</p>
+      <div class="daily-pillars">
+        <div class="pillar">
+          <span class="pillar-icon">🌿</span>
+          <div class="pillar-title">Seasonal &amp; Monthly Themes</div>
+          <p class="pillar-body">The practice is anchored in the Wu Xing (Five Elements) and the rhythm of the seasons. Each month carries its own theme and focus, guiding attention to the life areas most alive in that moment of the year.</p>
+        </div>
+        <div class="pillar">
+          <span class="pillar-icon">☽</span>
+          <div class="pillar-title">Weekly Arcs</div>
+          <p class="pillar-body">Each week follows an energetic arc from Initiation (Monday and Tuesday) through Elevation (Wednesday to Friday) to Deep Yin (Sunday), with daily prompts tailored to the day's energy: Wealth Wednesday, Flow Friday, Sacred Saturday.</p>
+        </div>
+        <div class="pillar">
+          <span class="pillar-icon">✦</span>
+          <div class="pillar-title">Reflection &amp; Journaling</div>
+          <p class="pillar-body">A dedicated, timestamped journal offers rotating daily prompts to help users track the subtle shifts in their home's energy and their own inner state. "What did your home ask of you today?" A history of past practices is always accessible.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── AESTHETIC ──────────────────────────────────────────────────────────── -->
+  <section class="aesthetic">
+    <div class="container">
+      <div class="section-rule"><span class="section-label">Design &amp; Aesthetic</span></div>
+      <h2 class="section-heading">Grounded.<br><em>Luminous. Serene.</em></h2>
+      <p class="section-body">HomeFlow's visual identity is built on a palette of Forest Green, Gold, and Amber, evoking the deep stillness of ancient practice and the warmth of candlelight. Every transition, every texture, every typographic choice is designed to slow the user down and draw them inward.</p>
+      <div class="aesthetic-swatches">
+        <div class="swatch">
+          <div class="swatch-dot" style="background:#1B3A2D;"></div>
+          <div><div class="swatch-label">Forest Deep</div><div class="swatch-value">#1B3A2D</div></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-dot" style="background:#C8963E;"></div>
+          <div><div class="swatch-label">Gold</div><div class="swatch-value">#C8963E</div></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-dot" style="background:#C8823A;"></div>
+          <div><div class="swatch-label">Amber</div><div class="swatch-value">#C8823A</div></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-dot" style="background:#D4C9BC;"></div>
+          <div><div class="swatch-label">Stone</div><div class="swatch-value">#D4C9BC</div></div>
+        </div>
+      </div>
+      <p class="section-body">The app's mindfulness integration is woven into the experience itself. "Set your phone down" breathing exercises accompany every analysis phase, and flowing-water cooldowns follow each result, ensuring that the user remains centered throughout.</p>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ─────────────────────────────────────────────────────────────── -->
   <footer>
-    <p>&copy; 2026 HomeFlow: BTB Feng Shui &nbsp;|&nbsp; <a href="#privacy">Privacy Policy</a> &nbsp;|&nbsp; <a href="#support">Support</a></p>
-    <p style="margin-top: 8px; font-style: italic; color: rgba(154,143,126,0.6);">Mindful Insights for Your Home</p>
+    <img src="assets/app-icon-homeflow.png" alt="HomeFlow" class="footer-icon" />
+    <div class="footer-name">HomeFlow: BTB Feng Shui</div>
+    <div class="footer-tagline">Wind and water, in the palm of your hand.</div>
+    <div class="footer-links">
+      <a href="#">App Store</a>
+      <a href="#">Google Play</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Contact</a>
+    </div>
+    <div class="footer-copy">&copy; 2026 HomeFlow. All rights reserved.</div>
   </footer>
 
 </body>
