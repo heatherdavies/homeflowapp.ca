@@ -491,14 +491,32 @@
     }
     .flow-image {
       width: 100%;
-      aspect-ratio: 1;
+      aspect-ratio: 3/4;
       object-fit: cover;
-      border-radius: 50%;
-      opacity: 0.75;
-      filter: saturate(0.7) hue-rotate(160deg) brightness(0.9);
-      border: 1px solid rgba(100,180,200,0.25);
-      box-shadow: 0 0 60px rgba(80,160,200,0.12);
+      border-radius: 12px;
+      opacity: 0.9;
+      filter: saturate(0.9) brightness(0.95);
+      border: 1px solid rgba(100,180,200,0.2);
+      box-shadow: 0 12px 60px rgba(0,0,0,0.5);
+      display: block;
     }
+    .flow-screenshots {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .flow-screenshot {
+      width: 100%;
+      aspect-ratio: 9/16;
+      object-fit: cover;
+      border-radius: 8px;
+      opacity: 0.8;
+      filter: saturate(0.85) brightness(0.9);
+      border: 1px solid rgba(100,180,200,0.15);
+      transition: opacity 0.2s, filter 0.2s;
+    }
+    .flow-screenshot:hover { opacity: 1; filter: saturate(1) brightness(1); }
     .flow-features {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -811,7 +829,12 @@
           </div>
         </div>
         <div class="flow-visual">
-          <img src="assets/flow-ripple.jpg" alt="Water ripple on a still pond" class="flow-image" />
+          <img src="assets/flow-koi-pond.jpg" alt="Teal koi pond in the Flow app" class="flow-image" />
+          <div class="flow-screenshots">
+            <img src="assets/flow-sanctuary-archive.jpg" alt="Sanctuary Archive" class="flow-screenshot" />
+            <img src="assets/flow-water-form.jpg" alt="Water Form practice" class="flow-screenshot" />
+            <img src="assets/flow-settings.jpg" alt="Scene settings" class="flow-screenshot" />
+          </div>
         </div>
       </div>
     </div>
