@@ -70,7 +70,20 @@
     .hero-content {
       position: relative;
       z-index: 2;
-      max-width: 720px;
+      max-width: 860px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .hero-header-img {
+      width: 100%;
+      max-width: 820px;
+      height: auto;
+      border-radius: 14px;
+      box-shadow: 0 12px 60px rgba(0,0,0,0.7), 0 0 0 1px rgba(200,150,62,0.25);
+      margin-bottom: 40px;
+      display: block;
     }
     .hero-icon {
       width: 96px;
@@ -619,6 +632,7 @@
     @media (max-width: 600px) {
       section { padding: 72px 20px; }
       .hero { padding: 64px 20px 80px; }
+      .hero-header-img { border-radius: 10px; margin-bottom: 28px; }
     }
   </style>
 </head>
@@ -629,10 +643,7 @@
     <div class="hero-bg"></div>
     <div class="hero-vignette"></div>
     <div class="hero-content">
-      <img src="assets/app-icon-homeflow.png" alt="HomeFlow icon" class="hero-icon" />
-      <p class="hero-eyebrow">BTB Feng Shui &nbsp;&middot;&nbsp; iOS &amp; Android</p>
-      <h1 class="hero-title">Home<span>Flow</span></h1>
-      <p class="hero-subtitle">Wind and water, in the palm of your hand.</p>
+      <img src="FinalHeaderJuly10.2026.png" alt="HomeFlow: BTB Feng Shui" class="hero-header-img" />
       <div class="hero-cta-group">
         <a href="https://apps.apple.com/ca/app/homeflow-btb-feng-shui/id6770570805" class="btn btn-primary" target="_blank" rel="noopener">App Store</a>
         <a class="btn btn-secondary" style="opacity:0.4;pointer-events:none;cursor:default;">Google Play &nbsp;<span style="font-size:9px;letter-spacing:1px;">Coming Soon</span></a>
